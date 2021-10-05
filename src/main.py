@@ -43,11 +43,8 @@ def normalizeLine(line):
 
 
 def getExerciseGroup(exercise):
-  print("inputd={}".format(exercise))
   for group in variables.exercise_groups:
-    print("group={}".format(group))
     if exercise in variables.exercises[group]:
-      print("exercise={}".format(exercise))
       return group
   return -1
 
@@ -100,8 +97,6 @@ def parseFile(filename):
         count = 0
         split = line.split(' ')[1:]
         current_exercise = ' '.join(split).lower()[:-1]
-        print()
-        print(current_exercise)
         
       # Check if week line - parse week number and add to started_week_number
       # - next line is weight line
@@ -116,6 +111,8 @@ def parseFile(filename):
         line = fd.readline() # Read next line to parse weights
         line = normalizeLine(line)
         split = line.split(' ')
+        if(split[len(split) - 1] == "skip"):
+          continue
         list_weights = split[len(split) - 1].split(',')
         processed_W = True
         check_for_weight_line_exercise = True
@@ -132,6 +129,8 @@ def parseFile(filename):
         line = normalizeLine(line)
         # print(line)
         split = line.split(' ')
+        if(split[len(split) - 1] == "skip"):
+          continue
         list_weights = split[len(split) - 1].split(',')
         check_for_weight_line_exercise = True
         input_weights = True
@@ -178,8 +177,7 @@ def parseFile(filename):
           progress_log[year_number][current_exercise_group][current_exercise] = {}
         if(current_week_number not in progress_log[year_number][current_exercise_group][current_exercise]):
           progress_log[year_number][current_exercise_group][current_exercise][current_week_number] = list_weights
-
-      pprint.pprint(progress_log)
+  pprint.pprint(progress_log)
 
 if __name__ == "__main__":
   # if len(sys.argv) != 2:

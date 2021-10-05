@@ -1,3 +1,37 @@
+# progress_log["muscle"][week] = [wt, wt, wt, wt]
+# progress_log["muscle"]["year"] = 
+
+
+
+# nested_dict = {
+#   'dictA': {
+#     'key_1': 'value_1'
+#   },
+#   'dictB': {
+#     'key_2': 'value_2'
+#   }
+# }
+
+# # progress_log[year][muscle_group][exercise][week]
+# progress_log = {
+#   'year': {
+#     'muscle_group': {
+#       'exercise' : {
+#         'week': [wt, wt, wt]
+#       }
+#     }
+#   }
+# }
+
+exercise_groups = [
+  "chest",
+  "back",
+  "legs",
+  "shoulders",
+  "biceps",
+  "triceps",
+]
+
 exercises ={
   "chest":[
     "incline db press",
@@ -38,10 +72,10 @@ exercises ={
     "smith machine shoulder press",
   ],
   "biceps":[
-    "barbell  curl",
+    "barbell curl",
     "preacher curl",
     "hammer curl",
-    "conc curl"
+    "concentration curl"
   ],
   "triceps":[
     "tricep pushdown",

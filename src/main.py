@@ -2,6 +2,7 @@ import sys # for use w/ cmdline arguments
 import variables # local file
 import datetime
 import pprint
+import json
 
 
 progress_log = {} # progress_log[year_number][muscle_group][exercise][week_number][LIST_WEIGHT]
@@ -66,6 +67,11 @@ def getMonthNumber(month_string):
 }[month_string]
 
 
+def imortToJSON():
+  file = open('output.json', 'w')
+  json.dump(progress_log, file)
+
+
 def parseFile(filename):
   global current_exercise, current_exercise_group
   with open(filename, "r") as fd:
@@ -75,7 +81,7 @@ def parseFile(filename):
 
       # If at EOF, break
       if not line:
-        print("DONE READING FILE")
+        imortToJSON()
         break
 
       ret = normalizeLine(line)

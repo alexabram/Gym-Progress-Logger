@@ -17,10 +17,6 @@ const routes: Routes = [
     component: ViewDataComponent
   },
   {
-    path: "view-data",
-    component: ViewDataComponent
-  },
-  {
     path: "visualize-data",
     component: VisualizeDataComponent
   },

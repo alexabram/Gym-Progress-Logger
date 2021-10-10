@@ -1,0 +1,77 @@
+<section class="hero is-primary is-bold">
+  <div class="hero body">
+    <div class="container">
+      <h1 class="title">
+        Contact Us!
+      </h1>
+    </div>
+  </div>
+</section>
+
+<section class = "section">
+  <div class="container">
+    <!-- contact form -->
+    <form (ngSubmit)="submitForm()" #contactForm="ngForm">
+      <!-- name -->
+      <div class="field">
+        <label class="label">Name</label>
+        <input 
+        type="text" 
+        name="name" 
+        class="input" 
+        [(ngModel)]="name"
+        #nameInput="ngModel"
+        required>
+        <!-- if name is invalid and user clicked on input box -->
+        <div class="help is-error" *ngIf="nameInput.invalid && nameInput.touched">
+          Your name is required.
+        </div>
+      </div>
+
+      <!-- email -->
+      <div class="field">
+        <label class="label">Email</label>
+        <input 
+          type="text" 
+          name="email" 
+          class="input" 
+          [(ngModel)]="email"
+          #emailInput="ngModel"
+          required
+          email>
+        <!-- if email is invalid and user clicked on input box -->
+        <div class="help is-error" *ngIf="emailInput.invalid && emailInput.touched">
+          Your email is required and must be valid.
+        </div>
+      </div>
+
+      <!-- message -->
+      <div class="field">
+        <label class="label">Your Message</label>
+        <textarea 
+          name="message" 
+          class="textarea" 
+          [(ngModel)]="message"
+          #messageInput="ngModel"
+          required>
+        </textarea>
+        <!-- if message is invalid and user clicked on input box -->
+        <div class="help is-error" *ngIf="messageInput.invalid && messageInput.touched">
+          Your message is required.
+        </div>
+      </div>
+
+      <!-- submit button -->
+      <div class="field">
+        <button 
+          type="submit" 
+          class="button is-large is-warning"
+          [disabled]="contactForm.invalid"
+          >
+          Send message
+        </button>
+      </div>
+
+    </form>
+  </div>
+</section>

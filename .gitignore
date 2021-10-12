@@ -1,6 +1,6 @@
 .DS_Store
 data/
-src/__pycache__/
+__pycache__/
 template_changes.txt
 consider.txt
 differentStyles.txt

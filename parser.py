@@ -8,10 +8,22 @@ import pprint
 import json
 
 
-progress_log = {} # progress_log[year_number][muscle_group][exercise][week_number][LIST_WEIGHT]
-map_exercise_to_group = {}
+'''Is used to track users progress
+progress_log[year_number][week_number][exercise] --> weight_list
+'''
+progress_log = {}
 
 
+'''
+Is used to map an exercise to its respective muscle group
+map_exercise_to_group[exercise] --> group
+'''
+map_exercise_to_group = {} # 
+
+
+'''
+Parse line and return [current_year_number, initial_week_number]
+'''
 def getYearAndWeek(line):
   # line looks like: "Started on: September 2, 2021"
   line = line[12:]
@@ -23,6 +35,9 @@ def getYearAndWeek(line):
   return [year_number, datetime.date(year_number, month_number, day_number).isocalendar()[1]]
 
 
+'''
+Print str in ASCII (for debug)
+'''
 def printASCII(str):
   for char in str:
     print(ord(char))
@@ -43,6 +58,9 @@ def normalizeLine(line):
     return line
 
 
+'''
+Given string month, return month number integer
+'''
 def getMonthNumber(month_string):
   return{
     "January":1, "February":2,"March":3, "April":4, "May":5, "June":6, "July":7,
@@ -50,14 +68,9 @@ def getMonthNumber(month_string):
   }[month_string]
 
 
-def importProgressLogToJSON():
-  file = open('../data/exports/ProgressLog.json', 'w')
-  json.dump(progress_log, file)
-
-def exportExerciseGroupMapToJSON():
-  file = open('../data/exports/ExerciseGroupMap.json', 'w')
-  json.dump(map_exercise_to_group, file)
-
+'''
+Given line containing E) for exercise, return [exercise, group]
+'''
 def parseExerciseLine(line):
   split = line.split(' ')
   # Get the group
@@ -70,6 +83,9 @@ def parseExerciseLine(line):
   return [exercise, group]
 
 
+'''
+Given line containing "alt", return alternate exercise (if exists)
+'''
 def parseAltExerciseLine(line):
   split = line.split(' ')
   if(len(split) == 1):
@@ -79,6 +95,10 @@ def parseAltExerciseLine(line):
     exercise = ' '.join(exercise)
     return exercise
 
+
+'''
+Given line containing "weight", return list of weights
+'''
 def parseWeightLine(line):
   split = line.split(' ') # remove spaces
   split = split[1:] # remove "weight:" string
@@ -86,12 +106,38 @@ def parseWeightLine(line):
   split = [int(item) for item in split]
   return split
 
+
+'''
+Given (year, week, exercise, weight_list), push entry to progress_log {}
+'''
 def push_prog_log(year, week, exercise, weight_list):
+  if(year not in progress_log):
+    progress_log[year] = {}
   if(week not in progress_log[year]):
     progress_log[year][week] = {}
   if(exercise not in progress_log[year][week]):
     progress_log[year][week][exercise] = weight_list
 
+
+'''
+Export progress_log {} to .json file
+'''
+def importProgressLogToJSON():
+  file = open('./data/exports/ProgressLog.json', 'w')
+  json.dump(progress_log, file)
+
+
+'''
+Export map_exercise_to_group {} to .json file
+'''
+def exportExerciseGroupMapToJSON():
+  file = open('./data/exports/ExerciseGroupMap.json', 'w')
+  json.dump(map_exercise_to_group, file)
+
+
+'''
+Driver for parser.py
+'''
 def parseFile(filename):
   global map_exercise_to_group
   have_year_and_start_week = False
@@ -107,11 +153,9 @@ def parseFile(filename):
         exportExerciseGroupMapToJSON()
         break
 
-      # print("BEFORE NORMALIZE():{}".format(line))
       line = normalizeLine(line)
       if(line == 0):
         continue
-      # print("AFTER NORMALIZE():{}".format(line))
 
       # Check if first line - get log's year and initial week
       if(have_year_and_start_week == False and line.find("Started") != -1):
@@ -119,21 +163,14 @@ def parseFile(filename):
         tuple_year_week = getYearAndWeek(line) # [year, week_started]
         current_year_number = tuple_year_week[0]
         initial_week_number = tuple_year_week[1]
-        # If current_year_number unique to progress_log, push it
-        if(current_year_number not in progress_log):
-          progress_log[current_year_number] = {}
-        # if(initial_week_number not in progress_log[current_year_number]):
-        #   progress_log[current_year_number][initial_week_number] = {}
       
       # Populate map<exercise, group>
       if(line.find("E)") != -1):
-        # print(line)
         tuple_exercise_group = parseExerciseLine(line)
         current_exercise = tuple_exercise_group[0].lower()
         current_group = tuple_exercise_group[1].lower()
         if(current_exercise not in map_exercise_to_group):
           map_exercise_to_group[current_exercise] = current_group
-        # pprint.pprint(map_exercise_to_group)
       
       if(line.find("W") != -1 and line[1].isdigit()):
         current_week_number = int(line[1]) + initial_week_number - 1
@@ -144,7 +181,6 @@ def parseFile(filename):
           current_exercise = ret.lower()
           if(current_exercise not in map_exercise_to_group):
             map_exercise_to_group[current_exercise] = current_group
-          # print(current_exercise)
 
       if(line.find("weight:") != -1):
         current_week_number = initial_week_number + delta_initial_week
@@ -155,8 +191,7 @@ def parseFile(filename):
         if(split[len(split) - 1] != "skip"): # If weight line doesn't say skip
           weight_list = parseWeightLine(line)
           push_prog_log(current_year_number, current_week_number, current_exercise, weight_list)
-      
-  # pprint.pprint(progress_log)
+
 
 if __name__ == "__main__":
   # if len(sys.argv) != 2:
@@ -164,4 +199,4 @@ if __name__ == "__main__":
   # else:
   #   parseFile(sys.argv[1])
 
-  parseFile("../data/imports/sep2copy1.txt")
+  parseFile("./data/imports/sep2copy1.txt")

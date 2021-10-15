@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { AboutComponent } from './about/about.component';
 import { HelpComponent } from './help/help.component';
 import { HomeComponent } from './home/home.component';
+import { LoadDataComponent } from './load-data/load-data.component';
 import { ViewDataComponent } from './view-data/view-data.component';
 import { VisualizeDataComponent } from './visualize-data/visualize-data.component';
 
@@ -27,6 +28,10 @@ const routes: Routes = [
   {
     path: "help",
     component: HelpComponent
+  },
+  {
+    path: "load-data",
+    component: LoadDataComponent
   }
 ];
 

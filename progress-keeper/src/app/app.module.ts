@@ -12,6 +12,7 @@ import { HelpComponent } from './help/help.component';
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { ContactComponent } from './contact/contact.component';
+import { LoadDataComponent } from './load-data/load-data.component';
 
 @NgModule({
   declarations: [
@@ -24,6 +25,7 @@ import { ContactComponent } from './contact/contact.component';
     HelpComponent,
     FooterComponent,
     ContactComponent,
+    LoadDataComponent,
   ],
   imports: [
     BrowserModule,

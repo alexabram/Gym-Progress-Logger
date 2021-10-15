@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import ProgressLogJSON from '../../assets/output.json'
+import ProgressLogJSON from '../../../../data/exports/ProgressLog.json'
 
 @Component({
   selector: 'app-view-data',
@@ -15,9 +15,6 @@ export class ViewDataComponent implements OnInit {
   ngOnInit(): void {
     console.log(this.progressLog)
     console.log(this.progressLog["2021"])
-    console.log(this.progressLog["2021"]["chest"])
-    console.log(this.progressLog["2021"]["chest"]["incline db press"])
-    console.log(this.progressLog["2021"]["chest"]["incline db press"]["35"])
   }
 
 }

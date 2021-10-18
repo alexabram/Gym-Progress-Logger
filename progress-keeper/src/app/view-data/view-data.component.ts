@@ -7,47 +7,44 @@ import ProgressLogJSON from '../../../../data/exports/ProgressLog.json'
   styleUrls: ['./view-data.component.scss']
 })
 export class ViewDataComponent implements OnInit {
-
-  progressLog:any = ProgressLogJSON; // {string: {string: {string: [int]}}}
+  progressLog:any = ProgressLogJSON; // {yr:string: {wk:string: {exercise:string: [int]}}}
   allYears:string[] = [];
+  // allWeeks:string[] = [];
   allExerciseNames:string[] = [];
-  allWeeks:string[] = [];
-
-  testing:string[] = ["one", "two", "three", "four"];
-  
   yearSelected:boolean = false;
   selectedYear:string = "";
+  exerciseSelected:boolean = false;
   selectedExercise:string = "";
 
   constructor() { }
 
   ngOnInit(): void {
-    // populate allYears
     this.allYears = Object.keys(this.progressLog);
-
-    // for(let key in this.progressLog){
-    //   console.log(this.progressLog[key])
-    //   console.log(key)
-    //   var allWeeks = Object.keys(this.progressLog[key])
-    //   console.log(allWeeks)
-    // }
-    // // this.allYears = Object.keys(this.progressLog)
-    // this.populateAllExerciseNames()
   }
 
-  populateAllExercises(year:string){
-    this.allWeeks = Object.keys(this.progressLog[year])
-    for(let i = 0; i < this.allWeeks.length; ++i){
-      let week = this.allWeeks[i]
-      // this.allExerciseNames.push(Object.keys(this.progressLog[year][week]))
+  // Populate allExerciseNames
+  getAllExerciseNames(year:string){
+    // Using class variable allWeeks:string[]
+    // this.allWeeks = Object.keys(this.progressLog[year]);
+    // for(let i = 0; i < this.allWeeks.length; ++i){
+    //   this.allExerciseNames = Object.keys(this.progressLog[year][this.allWeeks[i]]);
+    // }
+    var allWeeks:string[] = Object.keys(this.progressLog[year]);
+    for(let i = 0; i < allWeeks.length; ++i){
+      this.allExerciseNames = Object.keys(this.progressLog[year][allWeeks[i]]);
     }
   }
 
-  // Call this upon click on select year
+  // User selected year
   yearSelect(year:string){
-    // populate allExerciseNames and list them
     this.selectedYear = year;
     this.yearSelected = true;
-    this.populateAllExercises(this.selectedYear);
+    this.getAllExerciseNames(this.selectedYear);
+  }
+
+  // User selected exericse
+  exerciseSelect(exercise:string){
+    this.exerciseSelected = true;
+    this.selectedExercise = exercise;
   }
 }

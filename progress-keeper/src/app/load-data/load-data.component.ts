@@ -11,11 +11,18 @@ export class LoadDataComponent implements OnInit {
   @Input() year:string;
   progressLog:any = ProgressLogJSON; // {yr:string: {wk:string: {exercise:string: [int]}}}
 
+  allWeeks:string[] = [];
+
   constructor() { }
 
   ngOnInit(): void {
-    console.log(this.exercise)
-    console.log(this.year)
+    this.allWeeks = Object.keys(this.progressLog[this.year]);
+    this.sortWeights()
   }
 
+  sortWeights():void{
+    for(let i = 0; i < this.allWeeks.length; ++i){
+      this.progressLog[this.year][this.allWeeks[i]][this.exercise].sort()
+    }
+  }
 }

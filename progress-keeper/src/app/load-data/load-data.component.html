@@ -13,22 +13,10 @@
           <th>Weight</th>
         </tr>
       </tfoot>
-      <tbody>
-        <tr>
-          <th>Week # here</th>
-          <td>Weight here</td>
-        </tr>
-        <tr>
-          <th>Week # here</th>
-          <td>Weight here</td>
-        </tr>
-        <tr>
-          <th>Week # here</th>
-          <td>Weight here</td>
-        </tr>
-        <tr class="is-selected">
-          <th>Week # here</th>
-          <td>Weight here</td>
+      <tbody *ngFor="let week of allWeeks">
+        <tr *ngFor="let weight of progressLog[this.year][week][this.exercise]">
+          <th>{{week}}</th>
+          <td>{{weight}}</td>
         </tr>
       </tbody>
     </table>

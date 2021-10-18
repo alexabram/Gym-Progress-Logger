@@ -68,7 +68,7 @@
     
   </div>
   <div class="load-data-style" *ngIf="exerciseSelected && yearSelected">
-    <app-load-data></app-load-data>
+    <app-load-data [exercise]="selectedExercise" [year]="selectedYear"></app-load-data>
   </div>
 </section>
 

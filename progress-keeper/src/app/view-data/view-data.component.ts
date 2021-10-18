@@ -7,6 +7,7 @@ import ProgressLogJSON from '../../../../data/exports/ProgressLog.json'
   styleUrls: ['./view-data.component.scss']
 })
 export class ViewDataComponent implements OnInit {
+
   progressLog:any = ProgressLogJSON; // {yr:string: {wk:string: {exercise:string: [int]}}}
   allYears:string[] = [];
   // allWeeks:string[] = [];

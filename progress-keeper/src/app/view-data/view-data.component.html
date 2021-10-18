@@ -1,40 +1,74 @@
 <section class="hero is-primary is-bold is-fullheight">
   <div class="container has-text-centered">
     <div class="hero-body">
-      <h1 class="title">
-        TESTING
+      <h1 class="title" *ngIf="!exerciseSelected || !yearSelected">
+        Select year and exercise to view data
+      </h1>
+      <h1 class="title" *ngIf="exerciseSelected && yearSelected">
+        Viewing data for {{selectedExercise}} in {{selectedYear}}
       </h1>
     </div>
     <div class="dropdown is-hoverable">
-      <div class="dropdown-trigger">
-        <button class="button" aria-haspopup="true" aria-controls="dropdown-menu">
-          <span>Dropdown button</span>
+      <div class="dropdown-trigger" *ngIf="!yearSelected">
+        <button class="button dropdown-button" aria-haspopup="true" aria-controls="dropdown-menu">
+          <span>Select Year</span>
           <span class="icon is-small">
             <i class="fas fa-angle-down" aria-hidden="true"></i>
           </span>
         </button>
       </div>
       <div class="dropdown-menu" id="dropdown-menu" role="menu">
-        <div class="dropdown-content">
-          <a href="visualize-data" class="dropdown-item">
-            Dropdown item
-          </a>
-          <p class="dropdown-item">
-            Other dropdown item
+        <div class="dropdown-content" *ngFor="let year of allYears">
+          <p class="dropdown-item" (click)="yearSelect(year)">
+            {{year}}
           </p>
-          <a href="#" class="dropdown-item is-active">
-            Active dropdown item
-          </a>
-          <a href="#" class="dropdown-item">
-            Other dropdown item
-          </a>
-          <hr class="dropdown-divider">
-          <a href="#" class="dropdown-item">
-            With a divider
-          </a>
         </div>
       </div>
+      <div class="dropdown-trigger" *ngIf="yearSelected">
+        <button class="button dropdown-button" aria-haspopup="true" aria-controls="dropdown-menu">
+          <span>{{selectedYear}}</span>
+          <span class="icon is-small">
+            <i class="fas fa-angle-down" aria-hidden="true"></i>
+          </span>
+        </button>
+      </div>
     </div>
+    <div class="dropdown is-hoverable">
+      <div class="dropdown-trigger" *ngIf="!exerciseSelected">
+        <button class="button dropdown-button" aria-haspopup="true" aria-controls="dropdown-menu">
+          <span>Select Exercise</span>
+          <span class="icon is-small">
+            <i class="fas fa-angle-down" aria-hidden="true"></i>
+          </span>
+        </button>
+      </div>
+      <div class="dropdown-menu" id="dropdown-menu" role="menu" *ngIf="!yearSelected">
+        <div class="dropdown-content">
+          <p class="dropdown-item" >
+            Must Select Year
+          </p>
+        </div>
+      </div>
+      <div class="dropdown-menu" id="dropdown-menu" role="menu" *ngIf="yearSelected">
+        <div class="dropdown-content" *ngFor="let exercise of allExerciseNames">
+          <p class="dropdown-item" *ngIf="yearSelected" (click)="exerciseSelect(exercise)">
+            {{exercise}}
+          </p>
+        </div>
+      </div>
+      <div class="dropdown-trigger" *ngIf="exerciseSelected">
+        <button class="button dropdown-button" aria-haspopup="true" aria-controls="dropdown-menu">
+          <span>{{selectedExercise}}</span>
+          <span class="icon is-small">
+            <i class="fas fa-angle-down" aria-hidden="true"></i>
+          </span>
+        </button>
+      </div>
+    </div>
+    
+  </div>
+  <div class="load-data-style" *ngIf="exerciseSelected && yearSelected">
+    <app-load-data [exercise]="selectedExercise" [year]="selectedYear"></app-load-data>
   </div>
 </section>
 

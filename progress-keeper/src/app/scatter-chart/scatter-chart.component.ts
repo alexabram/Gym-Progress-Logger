@@ -10,6 +10,7 @@ import { Chart } from 'chart.js';
 export class ScatterChartComponent implements OnInit {
   @Input() exercise: string;
   @Input() year: string;
+
   progressLog: any = ProgressLogJSON; // {yr:string: {wk:string: {exercise:string: [int]}}}
 
   allWeeks: string[] = [];
@@ -21,9 +22,9 @@ export class ScatterChartComponent implements OnInit {
 
   ngOnInit(): void {
     this.allWeeks = Object.keys(this.progressLog[this.year]);
-    this.sortWeights()
+    // this.sortWeights()
     this.fillData()
-    this.scatterChartInit();
+    this.displayScatterChart();
   }
 
   sortWeights(): void {
@@ -51,7 +52,7 @@ export class ScatterChartComponent implements OnInit {
     return p;
   }
 
-  scatterChartInit(): void {
+  displayScatterChart(): void {
     this.scatterChart = new Chart("scatterChartID", {
       type: 'scatter',
       data: {
@@ -96,7 +97,7 @@ export class ScatterChartComponent implements OnInit {
             }
           }],
         },
-        legend:{
+        legend: {
           display: false,
         }
       },

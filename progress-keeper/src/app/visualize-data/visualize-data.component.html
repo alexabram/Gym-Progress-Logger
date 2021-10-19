@@ -65,9 +65,8 @@
         </button>
       </div>
     </div>
-  </div>
-  <div *ngIf="exerciseSelected && yearSelected">
-    <app-scatter-chart [exercise]="selectedExercise" [year]="selectedYear"></app-scatter-chart>
+    <div class="scatterChart" *ngIf="exerciseSelected && yearSelected">
+      <app-scatter-chart [exercise]="selectedExercise" [year]="selectedYear"></app-scatter-chart>
+    </div>
   </div>
 </section>
-

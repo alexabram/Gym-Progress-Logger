@@ -3,3 +3,24 @@
   background-size: cover;
   background-position: center center;
 }
+
+.dropdown-menu{
+  height: 150px;
+  overflow: auto;
+}
+
+.dropdown{
+  padding-right: 10px;
+}
+
+.dropdown-button{
+  min-width: 200px;
+}
+
+.dropdown-content{
+  min-width: 200px;
+}
+
+.load-data-style{
+  padding-top: 35px;
+}

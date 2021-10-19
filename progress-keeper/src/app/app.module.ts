@@ -13,6 +13,7 @@ import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { ContactComponent } from './contact/contact.component';
 import { LoadDataComponent } from './load-data/load-data.component';
+import { ScatterChartComponent } from './scatter-chart/scatter-chart.component';
 
 @NgModule({
   declarations: [
@@ -26,6 +27,7 @@ import { LoadDataComponent } from './load-data/load-data.component';
     FooterComponent,
     ContactComponent,
     LoadDataComponent,
+    ScatterChartComponent,
   ],
   imports: [
     BrowserModule,

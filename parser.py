@@ -88,7 +88,7 @@ Given line containing "alt", return alternate exercise (if exists)
 '''
 def parseAltExerciseLine(line):
   split = line.split(' ')
-  if(len(split) == 1):
+  if(len(split) == 1 or (len(split) == 2 and split[1] == "")):
     return 0
   else:
     exercise = split[1:]
@@ -117,6 +117,15 @@ def push_prog_log(year, week, exercise, weight_list):
     progress_log[year][week] = {}
   if(exercise not in progress_log[year][week]):
     progress_log[year][week][exercise] = weight_list
+
+'''
+Calve exercises look like CALVES.
+Including standing or seated.
+'''
+def getCalvesEName(current_exercise):
+  if(current_exercise.find("seat") != -1):
+    return "seated calve raise"
+  return "standing calve raise"
 
 
 '''
@@ -179,6 +188,8 @@ def parseFile(filename):
         ret = parseAltExerciseLine(line)
         if(ret != 0):
           current_exercise = ret.lower()
+          if(current_exercise.find("calv") != -1):
+            current_exercise = getCalvesEName(current_exercise)
           if(current_exercise not in map_exercise_to_group):
             map_exercise_to_group[current_exercise] = current_group
 

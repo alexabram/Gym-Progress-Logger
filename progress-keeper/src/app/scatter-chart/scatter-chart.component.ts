@@ -64,6 +64,7 @@ export class ScatterChartComponent implements OnInit {
         }]
       },
       options: {
+        maintainAspectRatio: false,
         scales: {
           xAxes: [{
             ticks: {

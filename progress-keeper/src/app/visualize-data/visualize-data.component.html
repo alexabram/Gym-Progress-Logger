@@ -50,6 +50,11 @@
         </div>
       </div>
       <div class="dropdown-menu" id="dropdown-menu" role="menu" *ngIf="yearSelected">
+        <div class="dropdown-content">
+          <p class="dropdown-item" *ngIf="emptyExercisesData">
+            No exercises
+          </p>
+        </div>
         <div class="dropdown-content" *ngFor="let exercise of allExerciseNames">
           <p class="dropdown-item" *ngIf="yearSelected" (click)="exerciseSelect(exercise)">
             {{exercise}}

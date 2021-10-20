@@ -24,10 +24,13 @@ export class VisualizeDataComponent implements OnInit {
 
   firstLoad:boolean = true;
 
+  emptyExercisesData:boolean = false;
+
   constructor() { }
 
   ngOnInit(): void {
     this.allYears = Object.keys(this.progressLog);
+    this.allYears.sort().reverse();
   }
 
   // Populate allExerciseNames
@@ -37,9 +40,17 @@ export class VisualizeDataComponent implements OnInit {
     // for(let i = 0; i < this.allWeeks.length; ++i){
     //   this.allExerciseNames = Object.keys(this.progressLog[year][this.allWeeks[i]]);
     // }
-    var allWeeks:string[] = Object.keys(this.progressLog[year]);
-    for(let i = 0; i < allWeeks.length; ++i){
-      this.allExerciseNames = Object.keys(this.progressLog[year][allWeeks[i]]);
+    if(typeof(this.progressLog[year]) == "undefined"){
+      this.emptyExercisesData = true;
+      return;
+    }
+    else{
+      this.emptyExercisesData = false;
+      var allWeeks:string[] = Object.keys(this.progressLog[year]);
+      for(let i = 0; i < allWeeks.length; ++i){
+        this.allExerciseNames = Object.keys(this.progressLog[year][allWeeks[i]]);
+      }
+      this.allExerciseNames = this.allExerciseNames.sort()
     }
   }
 
@@ -47,6 +58,7 @@ export class VisualizeDataComponent implements OnInit {
   yearSelect(year:string){
     this.yearSelected = true;
     this.selectedYear = year;
+    this.allExerciseNames = []
     this.getAllExerciseNames(this.selectedYear);
   }
 
@@ -58,7 +70,6 @@ export class VisualizeDataComponent implements OnInit {
     if(this.firstLoad){
       this.firstLoad = false;
       this.prevSelectedExercise = this.selectedExercise
-      console.log("FIRST LOAD")
       this.loadNewChart = true;
     }
     else{

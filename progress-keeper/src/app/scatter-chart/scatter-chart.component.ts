@@ -35,11 +35,13 @@ export class ScatterChartComponent implements OnInit {
 
   fillData(): void {
     for (let i = 0; i < this.allWeeks.length; ++i) {
-      var week: number = Number(this.allWeeks[i])
-      var weights = this.progressLog[this.year][week][this.exercise]
-      for (let j = 0; j < weights.length; ++j) {
-        var weight: number = weights[j]
-        this.chartData.push(this.createPoint(week, weight));
+      var week: string = this.allWeeks[i]
+      if(typeof(this.progressLog[this.year][week][this.exercise]) != "undefined"){
+        var weights = this.progressLog[this.year][week][this.exercise]
+        for (let j = 0; j < weights.length; ++j) {
+          var weight: number = weights[j]
+          this.chartData.push(this.createPoint(Number(week), weight));
+        }
       }
     }
   }

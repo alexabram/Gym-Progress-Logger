@@ -22,7 +22,10 @@ export class LoadDataComponent implements OnInit {
 
   sortWeights():void{
     for(let i = 0; i < this.allWeeks.length; ++i){
-      this.progressLog[this.year][this.allWeeks[i]][this.exercise].sort()
+      var weights:number[] = this.progressLog[this.year][this.allWeeks[i]][this.exercise]
+      if(typeof(weights) != "undefined"){
+        this.progressLog[this.year][this.allWeeks[i]][this.exercise].sort()
+      }
     }
   }
 }

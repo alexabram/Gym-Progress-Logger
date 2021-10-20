@@ -17,10 +17,13 @@ export class ViewDataComponent implements OnInit {
   exerciseSelected:boolean = false;
   selectedExercise:string = "";
 
+  emptyExercisesData:boolean = false;
+
   constructor() { }
 
   ngOnInit(): void {
     this.allYears = Object.keys(this.progressLog);
+    this.allYears.sort().reverse();
   }
 
   // Populate allExerciseNames
@@ -30,14 +33,23 @@ export class ViewDataComponent implements OnInit {
     // for(let i = 0; i < this.allWeeks.length; ++i){
     //   this.allExerciseNames = Object.keys(this.progressLog[year][this.allWeeks[i]]);
     // }
-    var allWeeks:string[] = Object.keys(this.progressLog[year]);
-    for(let i = 0; i < allWeeks.length; ++i){
-      this.allExerciseNames = Object.keys(this.progressLog[year][allWeeks[i]]);
+    if(typeof(this.progressLog[year]) == "undefined"){
+      this.emptyExercisesData = true;
+      return;
+    }
+    else{
+      this.emptyExercisesData = false;
+      var allWeeks:string[] = Object.keys(this.progressLog[year]);
+      for(let i = 0; i < allWeeks.length; ++i){
+        this.allExerciseNames = Object.keys(this.progressLog[year][allWeeks[i]]);
+      }
+      this.allExerciseNames = this.allExerciseNames.sort()
     }
   }
 
   // User selected year
   yearSelect(year:string){
+    this.allExerciseNames = []
     this.selectedYear = year;
     this.yearSelected = true;
     this.getAllExerciseNames(this.selectedYear);

@@ -9,9 +9,13 @@ import { VisualizeDataComponent } from './visualize-data/visualize-data.componen
 
 // Application routing for when/what to open
 const routes: Routes = [
+  // {
+  //   path: "",
+  //   component: HomeComponent
+  // },
   {
     path: "",
-    component: HomeComponent
+    component: ViewDataComponent
   },
   {
     path: "view-data",
@@ -21,18 +25,18 @@ const routes: Routes = [
     path: "visualize-data",
     component: VisualizeDataComponent
   },
-  {
-    path: "about",
-    component: AboutComponent
-  },
+  // {
+  //   path: "about",
+  //   component: AboutComponent
+  // },
   {
     path: "help",
     component: HelpComponent
   },
-  {
-    path: "load-data",
-    component: LoadDataComponent
-  }
+  // {
+  //   path: "load-data",
+  //   component: LoadDataComponent
+  // }
 ];
 
 @NgModule({

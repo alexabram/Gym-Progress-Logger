@@ -55,6 +55,7 @@ export class ScatterChartComponent implements OnInit {
   }
 
   displayScatterChart(): void {
+    // Chart.defaults.font.family = "Arial";
     this.scatterChart = new Chart("scatterChartID", {
       type: 'scatter',
       data: {
@@ -72,6 +73,7 @@ export class ScatterChartComponent implements OnInit {
               fontSize: 15,
               padding: 10,
               stepSize: 1,
+              fontFamily: "Verdana"
             },
             gridLines: {
               display: true,
@@ -81,6 +83,7 @@ export class ScatterChartComponent implements OnInit {
               display: true,
               labelString: "Week of year",
               fontSize: 15,
+              fontFamily: "Verdana"
             }
           }],
           yAxes: [{
@@ -88,6 +91,7 @@ export class ScatterChartComponent implements OnInit {
               display: true,
               fontSize: 15,
               padding: 10,
+              fontFamily: "Verdana"
             },
             gridLines: {
               display: true,
@@ -97,6 +101,7 @@ export class ScatterChartComponent implements OnInit {
               display: true,
               labelString: "Weight (lbs)",
               fontSize: 15,
+              fontFamily: "Verdana"
             }
           }],
         },

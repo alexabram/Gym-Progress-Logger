@@ -56,6 +56,7 @@ export class ScatterChartComponent implements OnInit {
 
   displayScatterChart(): void {
     // Chart.defaults.font.family = "Arial";
+    var label_xAxes:string = "Week of " + this.year
     this.scatterChart = new Chart("scatterChartID", {
       type: 'scatter',
       data: {
@@ -81,7 +82,7 @@ export class ScatterChartComponent implements OnInit {
             },
             scaleLabel: {
               display: true,
-              labelString: "Week of year",
+              labelString: label_xAxes,
               fontSize: 15,
               fontFamily: "Verdana"
             }

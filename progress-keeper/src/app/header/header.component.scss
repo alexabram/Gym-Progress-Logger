@@ -1,7 +1,16 @@
-.navbar-menu{
-  margin-right: 15px;
+.navbar-menu {
+  margin-right   : 15px;
+  display        : flex;
+  justify-content: space-between;
+  background     : rgb(54, 54, 54);
+  font-family    : Lato, Georgia, 'Times New Roman', Times, serif;
+  font-size      : large;
 }
 
-.navbar-brand{
+.navbar-item{
+  color:white;
+}
+
+.navbar-brand {
   margin-left: 15px;
 }

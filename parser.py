@@ -1,11 +1,11 @@
 #####################################
-##### python main.py [filename] #####
+###### usage: python parser.py ######
 #####################################
 
 import sys # for use w/ cmdline arguments
 import datetime
-import pprint
 import json
+import glob
 
 
 '''Is used to track users progress
@@ -36,11 +36,12 @@ def getYearAndWeek(line):
 
 
 '''
+DEBUG
 Print str in ASCII (for debug)
 '''
-def printASCII(str):
-  for char in str:
-    print(ord(char))
+# def printASCII(str):
+#   for char in str:
+#     print(ord(char))
 
 '''
 If line contains newline
@@ -205,9 +206,10 @@ def parseFile(filename):
 
 
 if __name__ == "__main__":
-  # if len(sys.argv) != 2:
-  #   sys.exit(2)
-  # else:
-  #   parseFile(sys.argv[1])
-
-  parseFile("./data/imports/sep2copy1.txt")
+  # Error on command
+  if len(sys.argv) > 1:
+    print("usage: python parser.py")
+    exit()
+  
+  for file in glob.glob("./data/imports/*.txt"):
+    parseFile(file)

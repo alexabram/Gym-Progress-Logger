@@ -1,9 +1,3 @@
 .DS_Store
-data/
+data/imports
 __pycache__/
-template_changes.txt
-consider.txt
-differentStyles.txt
-output.json
-output.txt
-possibleDicts.txt

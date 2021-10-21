@@ -3,20 +3,20 @@
     <table class="table" table-cell-padding=10em>
       <thead>
         <tr>
-          <th style="font-family:'Times New Roman', Times, serif; font-size: medium;">Week</th>
-          <th style="font-family:Georgia, 'Times New Roman', Times, serif; font-size: large;">Weight</th>
+          <th style="font-family:'Times New Roman', Times, serif; font-size: large;">Week</th>
+          <th style="font-family: 'Noto Sans', Georgia, 'Times New Roman', Times, serif; font-size: large;">Weight</th>
         </tr>
       </thead>
       <tfoot>
         <tr>
-          <th style="font-family:'Times New Roman', Times, serif; font-size: medium;">Week</th>
-          <th style="font-family:Georgia, 'Times New Roman', Times, serif; font-size: large;">Weight</th>
+          <th style="font-family:'Times New Roman', Times, serif; font-size: large;">Week</th>
+          <th style="font-family: 'Noto Sans', Georgia, 'Times New Roman', Times, serif; font-size: large;">Weight</th>
         </tr>
       </tfoot>
       <tbody *ngFor="let week of allWeeks">
         <tr *ngFor="let weight of progressLog[this.year][week][this.exercise]">
           <th style="font-family:'Times New Roman', Times, serif; font-size: medium;">{{week}}</th>
-          <td style="font-family:Georgia, 'Times New Roman', Times, serif; font-size: large;">{{weight}}</td>
+          <td style="font-family: 'Noto Sans', Georgia, 'Times New Roman', Times, serif; font-size: large;">{{weight}}</td>
         </tr>
       </tbody>
     </table>

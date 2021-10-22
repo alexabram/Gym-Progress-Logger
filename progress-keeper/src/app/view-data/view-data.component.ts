@@ -19,6 +19,9 @@ export class ViewDataComponent implements OnInit {
 
   emptyExercisesData:boolean = false;
 
+  showYearContent:boolean = true;
+  showExerciseContent:boolean = true;
+
   constructor() { }
 
   ngOnInit(): void {
@@ -52,17 +55,24 @@ export class ViewDataComponent implements OnInit {
     this.allExerciseNames = []
     this.selectedYear = year;
     this.yearSelected = true;
-    document.getElementById("dropdown-content-exercise")?.classList.remove('show')
     this.getAllExerciseNames(this.selectedYear);
-    document.getElementById("dropdown-content-year")?.classList.toggle('show')
-    // document.getElementById("dropdown-content-exercise")?.classList.remove('show')
+    if(this.showYearContent == false){
+      this.showYearContent = true
+    }
+    else{
+      this.showYearContent = false;
+    }
   }
 
   // User selected exericse
   exerciseSelect(exercise:string){
     this.exerciseSelected = true;
     this.selectedExercise = exercise;
-    document.getElementById("dropdown-content-year")?.classList.remove('show')
-    document.getElementById("dropdown-content-exercise")?.classList.toggle('show')
+    if(this.showExerciseContent == false){
+      this.showExerciseContent = true
+    }
+    else{
+      this.showExerciseContent = false;
+    }
   }
 }

@@ -3,7 +3,7 @@
     <!-- Header title -->
     <div class="hero-body">
       <h1 class="title" *ngIf="!exerciseSelected || !yearSelected">
-        Click menu to select year and exercise
+        Select year and exercise to view data
       </h1>
       <h1 class="title" *ngIf="exerciseSelected && yearSelected">
         Viewing data for {{selectedExercise}} in {{selectedYear}}
@@ -19,9 +19,19 @@
         </button>
       </div>
       <div class="dropdown-menu" id="dropdown-menu" role="menu">
-        <div class="dropdown-content" id="dropdown-content-year" *ngFor="let year of allYears">
-          <p class="dropdown-item" (click)="yearSelect(year)">{{year}}</p>
+        <div *ngIf="showYearContent">
+          <div class="dropdown-content" *ngFor="let year of allYears">
+            <p class="dropdown-item" (click)="yearSelect(year)">{{year}}</p>
+          </div>
         </div>
+        <div *ngIf="!showYearContent">
+          <div class="dropdown-content" *ngFor="let year of allYears">
+            <p class="dropdown-item" (click)="yearSelect(year)">{{year}}</p>
+          </div>
+        </div>
+        <!-- <div class="dropdown-content" id="dropdown-content-year" *ngFor="let year of allYears">
+          <p class="dropdown-item" (click)="yearSelect(year)">{{year}}</p>
+        </div> -->
       </div>
     </div>
     <!-- Exercise dropdown -->
@@ -34,9 +44,19 @@
       </div>
       <div class="dropdown-menu" role="menu">
         <div class="dropdown-content" id="dropdown-content-exercise">
-          <p class="dropdown-item" *ngIf="!yearSelected">Must Select Year</p>
-          <p class="dropdown-item" *ngIf="emptyExercisesData">No exercises</p>
-          <p class="dropdown-item" *ngFor="let exercise of allExerciseNames" (click)="exerciseSelect(exercise)">{{exercise}}</p>
+          <p *ngIf="!yearSelected" class="dropdown-item">Must Select Year</p>
+          <p *ngIf="emptyExercisesData" class="dropdown-item">No exercises</p>
+          <!-- <p class="dropdown-item" *ngFor="let exercise of allExerciseNames" (click)="exerciseSelect(exercise)">{{exercise}}</p> -->
+          <div *ngIf="showExerciseContent">
+            <div class="dropdown-content" *ngFor="let exercise of allExerciseNames">
+              <p class="dropdown-item" (click)="exerciseSelect(exercise)">{{exercise}}</p>
+            </div>
+          </div>
+          <div *ngIf="!showExerciseContent">
+            <div class="dropdown-content" *ngFor="let exercise of allExerciseNames">
+              <p class="dropdown-item" (click)="exerciseSelect(exercise)">{{exercise}}</p>
+            </div>
+          </div>
         </div>
       </div>
     </div>

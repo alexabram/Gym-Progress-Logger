@@ -43,3 +43,15 @@
 .title{
   font-family: 'Noto Sans', Georgia, 'Times New Roman', Times, serif; 
 }
+
+@media screen and (max-width:650px){
+  .title{
+    font-size: 20px;
+  }
+  .dropdown{
+    margin: 10px;
+  }
+  .dropdown-button{
+    margin:10px;
+  }
+}

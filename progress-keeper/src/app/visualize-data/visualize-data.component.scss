@@ -7,6 +7,14 @@
 .dropdown-menu{
   height: 150px;
   overflow: auto;
+  border-radius: 10px;
+  margin-top: 1px;
+}
+
+.button{
+  background-color:grey;
+  color: white;
+  min-width: 200px;
 }
 
 .dropdown{
@@ -19,6 +27,8 @@
 
 .dropdown-content{
   min-width: 200px;
+  background-color:grey;
+  position: relative;
 }
 
 .load-data-style{
@@ -37,6 +47,8 @@
 }
 
 .dropdown-item{
+  color: white;
+  font-weight: 900;
   font-family: "Lucida Console", "Courier New", Arial, monospace;
 }
 

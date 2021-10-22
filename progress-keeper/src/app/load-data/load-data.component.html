@@ -1,6 +1,13 @@
 <section class="hero is-primary is-bold is-fullheight">
   <div class="container has-text-centered">
-    <table class="table" table-cell-padding=10em>
+    <!-- <table *ngIf="printTable"
+      [ngStyle] = "{
+        'height': '650px',
+        'overflow-y': 'scroll',
+        'display':'block'
+        }"
+      > -->
+    <table [ngStyle] = "{'height': getTableHeight()}" class="table" table-cell-padding=10em>
       <thead>
         <tr>
           <th style="font-family:'Times New Roman', Times, serif; font-size: large;">Week</th>

@@ -26,6 +26,9 @@ export class VisualizeDataComponent implements OnInit {
 
   emptyExercisesData:boolean = false;
 
+  showYearContent:boolean = true;
+  showExerciseContent:boolean = true;
+
   constructor() { }
 
   ngOnInit(): void {
@@ -60,6 +63,12 @@ export class VisualizeDataComponent implements OnInit {
     this.selectedYear = year;
     this.allExerciseNames = []
     this.getAllExerciseNames(this.selectedYear);
+    if(this.showYearContent == false){
+      this.showYearContent = true
+    }
+    else{
+      this.showYearContent = false;
+    }
   }
 
   // User selected exericse
@@ -74,6 +83,12 @@ export class VisualizeDataComponent implements OnInit {
     }
     else{
       this.alternateLoadNewChart();
+    }
+    if(this.showExerciseContent == false){
+      this.showExerciseContent = true
+    }
+    else{
+      this.showExerciseContent = false;
     }
   }
 

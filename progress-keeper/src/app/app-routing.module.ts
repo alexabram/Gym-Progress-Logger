@@ -29,10 +29,10 @@ const routes: Routes = [
   //   path: "about",
   //   component: AboutComponent
   // },
-  {
-    path: "help",
-    component: HelpComponent
-  },
+  // {
+  //   path: "help",
+  //   component: HelpComponent
+  // },
   // {
   //   path: "load-data",
   //   component: LoadDataComponent

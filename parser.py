@@ -6,6 +6,8 @@ import sys # for use w/ cmdline arguments
 import datetime
 import json
 import glob
+import os
+import subprocess
 
 
 '''Is used to track users progress
@@ -204,12 +206,22 @@ def parseFile(filename):
           weight_list = parseWeightLine(line)
           push_prog_log(current_year_number, current_week_number, current_exercise, weight_list)
 
+def getNumTxtFilesInImportsDir():
+  cwd = os.getcwd()
+  path =  cwd + "/data/imports/"
+  return len(glob.glob(path+'*.txt'))
+
 
 if __name__ == "__main__":
-  # Error on command
-  if len(sys.argv) > 1:
-    print("usage: python parser.py")
-    exit()
+  # # Error on command usage
+  # if len(sys.argv) > 1:
+  #   print("usage: python parser.py")
+  #   exit()
   
-  for file in glob.glob("./data/imports/*.txt"):
-    parseFile(file)
+  # Get num of .txt files in /data/imports
+  numFiles = getNumTxtFilesInImportsDir()
+  if(numFiles == 0):
+    sys.exit(1) # communicate the error with runlocal.py so it quits exec
+  elif(numFiles > 0):
+    for file in glob.glob("./data/imports/*.txt"):
+      parseFile(file)

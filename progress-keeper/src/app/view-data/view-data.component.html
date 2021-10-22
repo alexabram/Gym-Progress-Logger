@@ -1,79 +1,47 @@
 <section class="hero is-primary is-bold is-fullheight">
   <div class="container has-text-centered">
+    <!-- Header title -->
     <div class="hero-body">
       <h1 class="title" *ngIf="!exerciseSelected || !yearSelected">
-        Select year and exercise to view data
+        Click menu to select year and exercise
       </h1>
       <h1 class="title" *ngIf="exerciseSelected && yearSelected">
         Viewing data for {{selectedExercise}} in {{selectedYear}}
+        <p style="font-size: 15px; font-family: 'Noto Sans', Georgia, 'Times New Roman', Times, serif;"><br><br>Select the year then exercise to view other data</p>
       </h1>
     </div>
+    <!-- Year dropdown -->
     <div class="dropdown is-hoverable">
-      <div class="dropdown-trigger" *ngIf="!yearSelected">
+      <div class="dropdown-trigger">
         <button class="button dropdown-button" aria-haspopup="true" aria-controls="dropdown-menu">
-          <span style="font-family:'Noto Sans', Georgia, 'Times New Roman', Times, serif; font-size: large;">Select Year</span>
-          <span class="icon is-small">
-            <i class="fas fa-angle-down" aria-hidden="true"></i>
-          </span>
+          <span *ngIf="!yearSelected" style="font-family:'Noto Sans', Georgia, 'Times New Roman', Times, serif; font-size: large;">Select Year</span>
+          <span *ngIf="yearSelected" style="font-family:'Noto Sans', Georgia, 'Times New Roman', Times, serif; font-size: large;">{{selectedYear}}</span>
         </button>
       </div>
       <div class="dropdown-menu" id="dropdown-menu" role="menu">
-        <div class="dropdown-content" *ngFor="let year of allYears">
-          <p class="dropdown-item" (click)="yearSelect(year)">
-            {{year}}
-          </p>
+        <div class="dropdown-content" id="dropdown-content-year" *ngFor="let year of allYears">
+          <p class="dropdown-item" (click)="yearSelect(year)">{{year}}</p>
         </div>
       </div>
-      <div class="dropdown-trigger" *ngIf="yearSelected">
-        <button class="button dropdown-button" aria-haspopup="true" aria-controls="dropdown-menu">
-          <span style="font-family:'Noto Sans', Georgia, 'Times New Roman', Times, serif; font-size: large;">{{selectedYear}}</span>
-          <span class="icon is-small">
-            <i class="fas fa-angle-down" aria-hidden="true"></i>
-          </span>
-        </button>
-      </div>
     </div>
+    <!-- Exercise dropdown -->
     <div class="dropdown is-hoverable">
-      <div class="dropdown-trigger" *ngIf="!exerciseSelected">
+      <div class="dropdown-trigger">
         <button class="button dropdown-button" aria-haspopup="true" aria-controls="dropdown-menu">
-          <span style="font-family:'Noto Sans', Georgia, 'Times New Roman', Times, serif; font-size: large;">Select Exercise</span>
-          <span class="icon is-small">
-            <i class="fas fa-angle-down" aria-hidden="true"></i>
-          </span>
+          <span *ngIf="!exerciseSelected" style="font-family:'Noto Sans', Georgia, 'Times New Roman', Times, serif; font-size: large;">Select Exercise</span>
+          <span *ngIf="exerciseSelected" style="font-family:'Noto Sans', Georgia, 'Times New Roman', Times, serif; font-size: large;">{{selectedExercise}}</span>
         </button>
       </div>
-      <div class="dropdown-menu" id="dropdown-menu" role="menu" *ngIf="!yearSelected">
-        <div class="dropdown-content">
-          <p class="dropdown-item" >
-            Must Select Year
-          </p>
+      <div class="dropdown-menu" role="menu">
+        <div class="dropdown-content" id="dropdown-content-exercise">
+          <p class="dropdown-item" *ngIf="!yearSelected">Must Select Year</p>
+          <p class="dropdown-item" *ngIf="emptyExercisesData">No exercises</p>
+          <p class="dropdown-item" *ngFor="let exercise of allExerciseNames" (click)="exerciseSelect(exercise)">{{exercise}}</p>
         </div>
-      </div>
-      <div class="dropdown-menu" id="dropdown-menu" role="menu" *ngIf="yearSelected">
-        <div class="dropdown-content">
-          <p class="dropdown-item" *ngIf="emptyExercisesData">
-            No exercises
-          </p>
-        </div>
-        <div class="dropdown-content" *ngFor="let exercise of allExerciseNames">
-          <p class="dropdown-item" *ngIf="yearSelected" (click)="exerciseSelect(exercise)">
-            {{exercise}}
-          </p>
-        </div>
-      </div>
-      <div class="dropdown-trigger" *ngIf="exerciseSelected">
-        <button class="button dropdown-button" aria-haspopup="true" aria-controls="dropdown-menu">
-          <span style="font-family:'Noto Sans', Georgia, 'Times New Roman', Times, serif; font-size: large;">{{selectedExercise}}</span>
-          <span class="icon is-small">
-            <i class="fas fa-angle-down" aria-hidden="true"></i>
-          </span>
-        </button>
       </div>
     </div>
-    
   </div>
   <div class="load-data-style" *ngIf="exerciseSelected && yearSelected">
     <app-load-data [exercise]="selectedExercise" [year]="selectedYear"></app-load-data>
   </div>
 </section>
-

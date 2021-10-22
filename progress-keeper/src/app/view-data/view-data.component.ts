@@ -52,12 +52,17 @@ export class ViewDataComponent implements OnInit {
     this.allExerciseNames = []
     this.selectedYear = year;
     this.yearSelected = true;
+    document.getElementById("dropdown-content-exercise")?.classList.remove('show')
     this.getAllExerciseNames(this.selectedYear);
+    document.getElementById("dropdown-content-year")?.classList.toggle('show')
+    // document.getElementById("dropdown-content-exercise")?.classList.remove('show')
   }
 
   // User selected exericse
   exerciseSelect(exercise:string){
     this.exerciseSelected = true;
     this.selectedExercise = exercise;
+    document.getElementById("dropdown-content-year")?.classList.remove('show')
+    document.getElementById("dropdown-content-exercise")?.classList.toggle('show')
   }
 }

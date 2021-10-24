@@ -95,16 +95,16 @@
       </app-scatter-chart>
     </div>
     <div class="chartStyle" *ngIf="exerciseSelected && yearSelected && lineChart">
-      <app-scatter-chart *ngIf="loadNewChart"
+      <app-line-chart *ngIf="loadNewChart"
         [year]="selectedYear"
         [exercise]="selectedExercise"
       >
-      </app-scatter-chart>
-      <app-scatter-chart *ngIf="!loadNewChart"
+      </app-line-chart>
+      <app-line-chart *ngIf="!loadNewChart"
         [year]="selectedYear"
         [exercise]="selectedExercise"
         >
-      </app-scatter-chart>
+      </app-line-chart>
     </div>
   </div>
 </section>

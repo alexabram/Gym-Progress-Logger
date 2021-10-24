@@ -14,6 +14,7 @@ import { FooterComponent } from './footer/footer.component';
 import { ContactComponent } from './contact/contact.component';
 import { LoadDataComponent } from './load-data/load-data.component';
 import { ScatterChartComponent } from './scatter-chart/scatter-chart.component';
+import { GridJsAngularModule } from 'gridjs-angular';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,8 @@ import { ScatterChartComponent } from './scatter-chart/scatter-chart.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule,
+    GridJsAngularModule
   ],
   providers: [],
   bootstrap: [AppComponent]

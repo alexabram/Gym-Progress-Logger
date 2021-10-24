@@ -20,6 +20,8 @@
     "@angular/router": "~12.2.0",
     "bulma": "^0.9.3",
     "chart.js": "^2.9.4",
+    "gridjs": "^4.0.0",
+    "gridjs-angular": "^1.2.0",
     "ng2-charts": "^2.4.3",
     "rxjs": "~6.6.0",
     "tslib": "^2.3.0",

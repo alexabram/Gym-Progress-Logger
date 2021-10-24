@@ -15,6 +15,7 @@ import { ContactComponent } from './contact/contact.component';
 import { LoadDataComponent } from './load-data/load-data.component';
 import { ScatterChartComponent } from './scatter-chart/scatter-chart.component';
 import { GridJsAngularModule } from 'gridjs-angular';
+import { LineChartComponent } from './line-chart/line-chart.component';
 
 @NgModule({
   declarations: [
@@ -29,6 +30,7 @@ import { GridJsAngularModule } from 'gridjs-angular';
     ContactComponent,
     LoadDataComponent,
     ScatterChartComponent,
+    LineChartComponent,
   ],
   imports: [
     BrowserModule,

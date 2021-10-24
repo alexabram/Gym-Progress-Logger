@@ -58,11 +58,47 @@
         </div>
       </div>
     </div>
-    <div class="scatterChart" *ngIf="exerciseSelected && yearSelected">
+    <!-- Chart type dropdown -->
+    <div class="dropdown is-hoverable">
+      <div class="dropdown-trigger">
+        <button class="button dropdown-button" aria-haspopup="true" aria-controls="dropdown-menu">
+          <span *ngIf="!chartTypeSelected" style="font-family:'Noto Sans', Georgia, 'Times New Roman', Times, serif; font-size: large;">Select Chart Type</span>
+          <span *ngIf="chartTypeSelected"style="font-family:'Noto Sans', Georgia, 'Times New Roman', Times, serif; font-size: large;">{{selectedChartType}}</span>
+        </button>
+      </div>
+      <div class="dropdown-menu" role="menu" >
+        <div class="dropdown-content">
+          <div *ngIf="showChartTypeContent">
+            <div class="dropdown-content" *ngFor="let type of allChartTypes">
+              <p class="dropdown-item" (click)="chartSelect(type)">{{type}}</p>
+            </div>
+          </div>
+          <div *ngIf="!showChartTypeContent">
+            <div class="dropdown-content" *ngFor="let type of allChartTypes">
+              <p class="dropdown-item" (click)="chartSelect(type)">{{type}}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="chartStyle" *ngIf="exerciseSelected && yearSelected && scatterChart">
       <app-scatter-chart *ngIf="loadNewChart"
         [year]="selectedYear"
         [exercise]="selectedExercise"
+      >
+      </app-scatter-chart>
+      <app-scatter-chart *ngIf="!loadNewChart"
+        [year]="selectedYear"
+        [exercise]="selectedExercise"
         >
+      </app-scatter-chart>
+    </div>
+    <div class="chartStyle" *ngIf="exerciseSelected && yearSelected && lineChart">
+      <app-scatter-chart *ngIf="loadNewChart"
+        [year]="selectedYear"
+        [exercise]="selectedExercise"
+      >
       </app-scatter-chart>
       <app-scatter-chart *ngIf="!loadNewChart"
         [year]="selectedYear"

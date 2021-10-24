@@ -1,3 +1,4 @@
+import { ThrowStmt } from '@angular/compiler';
 import { Component, OnInit } from '@angular/core';
 import { Chart } from 'chart.js';
 import ProgressLogJSON from '../../../../data/exports/ProgressLog.json'
@@ -29,6 +30,13 @@ export class VisualizeDataComponent implements OnInit {
   showYearContent:boolean = true;
   showExerciseContent:boolean = true;
 
+  chartTypeSelected:boolean = false;
+  selectedChartType:string = "";
+  allChartTypes:string[] = ["scatter chart", "line chart"]
+  showChartTypeContent:boolean = false;
+  scatterChart:boolean = false;
+  lineChart:boolean = false;
+
   constructor() { }
 
   ngOnInit(): void {
@@ -54,6 +62,25 @@ export class VisualizeDataComponent implements OnInit {
         this.allExerciseNames = Object.keys(this.progressLog[year][allWeeks[i]]);
       }
       this.allExerciseNames = this.allExerciseNames.sort()
+    }
+  }
+
+  chartSelect(type:string){
+    this.chartTypeSelected = true;
+    this.selectedChartType = type;
+    if(type == "line chart"){
+      this.lineChart = true;
+      this.scatterChart = false;
+    }
+    else if(type == "scatter chart"){
+      this.scatterChart = true;
+      this.lineChart = false;
+    }
+    if(this.showChartTypeContent == false){
+      this.showChartTypeContent = true
+    }
+    else{
+      this.showChartTypeContent = false;
     }
   }
 

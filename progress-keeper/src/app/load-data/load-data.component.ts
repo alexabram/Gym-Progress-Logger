@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import ProgressLogJSON from '../../../../data/exports/ProgressLog.json'
+import { UserConfig } from "gridjs";
 
 @Component({
   selector: 'app-load-data',
@@ -18,10 +19,47 @@ export class LoadDataComponent implements OnInit {
 
   constructor() { }
 
+  public gridConfig: UserConfig = {
+    // columns: ["Week", "Weight"],
+    // data: [
+    //   ["John", "john@example.com"],
+    //   ["Mark", "mark@gmail.com"],
+    //   ["Eoin", "eoin@gmail.com"],
+    //   ["Sarah", "sarahcdd@gmail.com"],
+    //   ["Afshin", "afshin@mail.com"],
+    // ],
+  };
+
+  populateGrid():UserConfig{
+    var data:String[][]= []
+    for(let i = 0; i < this.allWeeks.length; ++i){
+      var week = this.allWeeks[i];
+      var weights:number[] = [];
+      weights = this.progressLog[this.year][week][this.exercise]
+      if(typeof(weights) != "undefined"){
+        var weightString:String = ""
+        for(let j = 0; j < weights.length; ++j){
+          weightString += String(weights[j])
+          if(j + 1 != weights.length){
+            weightString += ", "
+          }
+        }
+        let temp = [week, weightString]
+        data.push(temp)
+      }
+    }
+    return {
+      columns: ["Week", "Weight"],
+      data: data,
+    }; 
+  }
+
   ngOnInit(): void {
+    // console.log("inside ngoninit()")
     this.printTable = false;
     this.allWeeks = Object.keys(this.progressLog[this.year]);
     this.sortWeights()
+    this.gridConfig = this.populateGrid()
     this.printTable = true;
   }
 

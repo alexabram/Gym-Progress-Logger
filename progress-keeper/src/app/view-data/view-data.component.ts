@@ -22,6 +22,9 @@ export class ViewDataComponent implements OnInit {
   showYearContent:boolean = true;
   showExerciseContent:boolean = true;
 
+  loadNewGrid:boolean = false;
+  firstLoad:boolean = true;
+
   constructor() { }
 
   ngOnInit(): void {
@@ -73,6 +76,23 @@ export class ViewDataComponent implements OnInit {
     }
     else{
       this.showExerciseContent = false;
+    }
+
+    if(this.firstLoad){
+      this.firstLoad = false;
+      this.loadNewGrid = true;
+    }
+    else{
+      this.alternateLoadNewGrid();
+    }
+  }
+
+  alternateLoadNewGrid(){
+    if(this.loadNewGrid){
+      this.loadNewGrid = false;
+    }
+    else{
+      this.loadNewGrid = true;
     }
   }
 }

@@ -1,31 +1,24 @@
-<!-- <section class="hero is-primary is-bold is-fullheight"> -->
-  <!-- <div class="container has-text-centered"> -->
-    <!-- <table *ngIf="printTable"
-      [ngStyle] = "{
-        'height': '650px',
-        'overflow-y': 'scroll',
-        'display':'block'
-        }"
-      > -->
-    <table [ngStyle] = "{'height': getTableHeight()}" class="table" table-cell-padding=10em>
-      <thead>
-        <tr>
-          <th style="font-family:'Times New Roman', Times, serif; font-size: large;">Week</th>
-          <th style="font-family: 'Noto Sans', Georgia, 'Times New Roman', Times, serif; font-size: large;">Weight</th>
-        </tr>
-      </thead>
-      <tfoot>
-        <tr>
-          <th style="font-family:'Times New Roman', Times, serif; font-size: large;">Week</th>
-          <th style="font-family: 'Noto Sans', Georgia, 'Times New Roman', Times, serif; font-size: large;">Weight</th>
-        </tr>
-      </tfoot>
-      <tbody *ngFor="let week of allWeeks">
-        <tr *ngFor="let weight of progressLog[this.year][week][this.exercise]">
-          <th style="font-family:'Times New Roman', Times, serif; font-size: medium;">{{week}}</th>
-          <td style="font-family: 'Noto Sans', Georgia, 'Times New Roman', Times, serif; font-size: large;">{{weight}}</td>
-        </tr>
-      </tbody>
-    </table>
-  <!-- </div> -->
-<!-- </section> -->
+<gridjs-angular [config]="gridConfig">
+</gridjs-angular>
+
+
+<!-- <table [ngStyle] = "{'height': getTableHeight()}" class="table" table-cell-padding=10em>
+  <thead>
+    <tr>
+      <th style="font-family:'Times New Roman', Times, serif; font-size: large;">Week</th>
+      <th style="font-family: 'Noto Sans', Georgia, 'Times New Roman', Times, serif; font-size: large;">Weight</th>
+    </tr>
+  </thead>
+  <tfoot>
+    <tr>
+      <th style="font-family:'Times New Roman', Times, serif; font-size: large;">Week</th>
+      <th style="font-family: 'Noto Sans', Georgia, 'Times New Roman', Times, serif; font-size: large;">Weight</th>
+    </tr>
+  </tfoot>
+  <tbody *ngFor="let week of allWeeks">
+    <tr *ngFor="let weight of progressLog[this.year][week][this.exercise]">
+      <th style="font-family:'Times New Roman', Times, serif; font-size: medium;">{{week}}</th>
+      <td style="font-family: 'Noto Sans', Georgia, 'Times New Roman', Times, serif; font-size: large;">{{weight}}</td>
+    </tr>
+  </tbody>
+</table> -->

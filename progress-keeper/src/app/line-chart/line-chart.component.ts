@@ -2,6 +2,11 @@ import { Component, Input, OnInit } from '@angular/core';
 import ProgressLogJSON from '../../../../data/exports/ProgressLog.json'
 import { Chart } from 'chart.js';
 
+const monthName = ["Jan", "Feb", "Mar", "Apr", "May", "Jun",
+                  "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"
+];
+
+
 @Component({
   selector: 'app-line-chart',
   templateUrl: './line-chart.component.html',
@@ -39,9 +44,23 @@ export class LineChartComponent implements OnInit {
           total += weights[j]
         }
         this.chartData.push(total / weights.length);
-        this.labels.push(week)
+        let date = this.getDateOfWeekNumber(this.year, week)
+        var weekString:string = monthName[date.getMonth()] + " " + date.getDate();
+        this.labels.push(weekString)
       }
     }
+  }
+  
+  // https://stackoverflow.com/a/16591175
+  getDateOfWeekNumber(year:string, week:string):Date{
+    var simple = new Date(Number(year), 0, 1 + (Number(week) - 1) * 7);
+    var dow = simple.getDay();
+    var ISOweekStart = simple;
+    if (dow <= 4)
+      ISOweekStart.setDate(simple.getDate() - simple.getDay() + 1);
+    else
+      ISOweekStart.setDate(simple.getDate() + 8 - simple.getDay());
+    return ISOweekStart;
   }
 
   displayLineChart() {
@@ -64,7 +83,7 @@ export class LineChartComponent implements OnInit {
           xAxes: [{
             ticks: {
               display: true,
-              fontSize: 15,
+              fontSize: this.chartData.length > 10 ? 10 : 15,
               padding: 10,
               stepSize: 1,
               fontFamily: "Verdana",

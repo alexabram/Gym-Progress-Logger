@@ -100,14 +100,25 @@ def parseAltExerciseLine(line):
 
 
 '''
-Given line containing "weight", return list of weights
+Given line containing "weight", parse line, create and return list of weights
 '''
 def parseWeightLine(line):
-  split = line.split(' ') # remove spaces
-  split = split[1:] # remove "weight:" string
-  split = split[0].split(',')
-  split = [int(item) for item in split]
-  return split
+  # example line:   weight: 55, 65, 70, 60
+  # example line:   weight:50,60,65,60
+  # example line:   weight: 50,60,65,60
+  weights = []
+  weight = ""
+  for char in line:
+    if char.isdigit():
+      weight += char
+    else:
+      if len(weight) > 0:
+        weights.append(weight)
+      weight = ""
+  if(len(weight) > 0):
+    weights.append(weight)
+  weights = [int(item) for item in weights]
+  return weights
 
 
 '''
@@ -121,6 +132,7 @@ def push_prog_log(year, week, exercise, weight_list):
   if(exercise not in progress_log[year][week]):
     progress_log[year][week][exercise] = weight_list
 
+
 '''
 Calve exercises look like CALVES.
 Determine if standing or seated.
@@ -129,6 +141,7 @@ def getCalvesEName(current_exercise):
   if(current_exercise.lower().find("seat") != -1):
     return "seated calve raise"
   return "standing calve raise"
+
 
 '''
 Shrug exercises look like SHRUGS.
@@ -224,11 +237,6 @@ def getNumTxtFilesInImportsDir():
 
 
 if __name__ == "__main__":
-  # # Error on command usage
-  # if len(sys.argv) > 1:
-  #   print("usage: python parser.py")
-  #   exit()
-  
   # Get num of .txt files in /data/imports
   numFiles = getNumTxtFilesInImportsDir()
   if(numFiles == 0):

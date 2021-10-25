@@ -35,7 +35,7 @@ I personally have been using this template for almost a year. I have shared this
   - [Motivation for the project](#motivation-for-the-project)
 - [Sample demo](#sample-demo)
 - [Setup](#setup)
-- [How to use with template](#how-to-use-with-temlate)
+- [How to use with template](#how-to-use-with-template)
 - [Run the application locally](#run-the-application-locally)
 
 ## Sample demo

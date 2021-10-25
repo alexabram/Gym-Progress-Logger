@@ -1,4 +1,4 @@
-# Gym Progress Logger and Visualizer - Web Application
+# Gym Progress Logger and Visualizer Web Application
 
 ---
 
@@ -27,7 +27,7 @@ I personally have been using this template for almost a year. I have shared this
 
 ---
 
-- [Gym Progress Logger and Visualizer - Web Application](#gym-progress-logger-and-visualizer-web---application)
+- [Gym Progress Logger and Visualizer Web Application](#gym-progress-logger-and-visualizer-web-application)
 
 * [Quick links](#quick-links)
 
@@ -49,7 +49,7 @@ I personally have been using this template for almost a year. I have shared this
 4. `cd Gym_Progress_Keeper`
 5. `python setup.py`
 
-## How to use with template.txt
+## How to use with template
 
 - Download and modify [template.txt](https://github.com/alexabram/Gym_Progress_Keeper/blob/master/template.txt) to match your workout routine.
   - "Started on: "

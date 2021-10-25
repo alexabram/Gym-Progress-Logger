@@ -27,7 +27,7 @@ I personally have been using this template for almost a year. I have shared this
 
 ---
 
-- [Gym Progress Logger and Visualizer Web Application](#gym-progress-logger-and-visualizer-web-application)
+- [Gym Progress Logger and Data Visualizer Web Application](#gym-progress-logger-and-visualizer-web-application)
 
 * [Quick links](#quick-links)
 

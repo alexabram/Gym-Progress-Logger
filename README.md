@@ -21,7 +21,7 @@ This AngularJS web application aggregates the user's gym progress data and allow
 
 ### Motivation for the project
 
-I personally have been using this template for almost a year. I have shared this template with multiple peers who consistently utilize and track their progress in plain text. Up until now, plain text was the only way to view our data. Now, we will be able to view our data in both grid tables and charts, providing an easier and readable medium (easier than plain text) to track and analyze our progress.
+I personally have been using this template for almost a year. I have shared this template with multiple peers who consistently utilize and track their progress in plain text. I input (and recommend users to input) data into template.txt by copying the file into your mobile Notes application and filling data on-the-go during gym workouts. Up until now, plain text was the only way to view our data. Now, we will be able to view our data in both grid tables and charts, providing an easier and readable medium (easier than plain text) to track and analyze our progress.
 
 ## Contents
 

@@ -2,13 +2,13 @@
   <div class="container has-text-centered" style="margin-bottom: 20px;">
     <!-- Header title -->
     <div class="hero-body">
-      <h1 class="title" *ngIf="!exerciseSelected || !yearSelected">
-        Select year and exercise to visualize data
+      <h1 class="title" *ngIf="!exerciseSelected || !yearSelected || !chartTypeSelected">
+        Select year, exercise and chart type to visualize data
       </h1>
-      <h1 class="title" *ngIf="exerciseSelected && yearSelected">
+      <h1 class="title" *ngIf="exerciseSelected && yearSelected && chartTypeSelected">
         Visualizing data for {{selectedExercise}} in {{selectedYear}}
         <p style="font-size: 15px; font-family: 'Noto Sans', Georgia, 'Times New Roman', Times, serif;">
-          <br><br>Select alternate year or exercise to visualize other data
+          <br><br>Select alternate year, exercise or chart to visualize other data
         </p>
       </h1>
     </div>

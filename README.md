@@ -69,8 +69,10 @@ I personally have been using this template for almost a year. I have shared this
   - any sort of exercise and muscle group
   - any set and repetition range they wish
 
-## Run the application
+## Run the application (local)
 
 1. Place all template.txt (if more than one file, rename files uniquely) file inside the `/data/imports/` folder created during [setup](#setup).
 2. Run command `python runlocal.py` in the directory where this repository was cloned during [setup](#setup).
+3. The application web page should open in your default browser.
+   1. To quit, enter keys `ctrl + c` in window where command in step 2 above was entered.
 

@@ -137,20 +137,20 @@ def push_prog_log(year, week, exercise, weight_list):
 Calve exercises look like CALVES.
 Determine if standing or seated.
 '''
-def getCalvesEName(current_exercise):
-  if(current_exercise.lower().find("seat") != -1):
-    return "seated calve raise"
-  return "standing calve raise"
+# def getCalvesEName(current_exercise):
+#   if(current_exercise.find("seat") != -1):
+#     return "seated calve raise"
+#   return "standing calve raise"
 
 
 '''
 Shrug exercises look like SHRUGS.
 Determine if barbell or dumbbell.
 '''
-def getShrugsEName(current_exercise):
-  if(current_exercise.lower().find("barbell") != -1):
-    return "barbell shrugs"
-  return "dumbbell shrugs"
+# def getShrugsEName(current_exercise):
+#   if(current_exercise.find("barbell") != -1):
+#     return "barbell shrugs"
+#   return "dumbbell shrugs"
 
 
 '''
@@ -213,10 +213,6 @@ def parseFile(filename):
         ret = parseAltExerciseLine(line)
         if(ret != 0):
           current_exercise = ret.lower()
-          if(current_exercise.lower().find("calv") != -1):
-            current_exercise = getCalvesEName(current_exercise)
-          if(current_exercise.lower().find("shrug") != -1):
-            current_exercise = getShrugsEName(current_exercise)
           if(current_exercise not in map_exercise_to_group):
             map_exercise_to_group[current_exercise] = current_group
 

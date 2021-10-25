@@ -2,6 +2,10 @@ import { Component, Input, OnInit } from '@angular/core';
 import ProgressLogJSON from '../../../../data/exports/ProgressLog.json'
 import { UserConfig } from "gridjs";
 
+const monthName = ["Jan", "Feb", "Mar", "Apr", "May", "Jun",
+                  "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"
+];
+
 @Component({
   selector: 'app-load-data',
   templateUrl: './load-data.component.html',
@@ -19,16 +23,15 @@ export class LoadDataComponent implements OnInit {
 
   constructor() { }
 
-  public gridConfig: UserConfig = {
-    // columns: ["Week", "Weight"],
-    // data: [
-    //   ["John", "john@example.com"],
-    //   ["Mark", "mark@gmail.com"],
-    //   ["Eoin", "eoin@gmail.com"],
-    //   ["Sarah", "sarahcdd@gmail.com"],
-    //   ["Afshin", "afshin@mail.com"],
-    // ],
-  };
+  public gridConfig: UserConfig = {};
+
+  ngOnInit(): void {
+    this.printTable = false;
+    this.allWeeks = Object.keys(this.progressLog[this.year]);
+    this.sortWeights()
+    this.gridConfig = this.populateGrid()
+    this.printTable = true;
+  }
 
   populateGrid(): UserConfig {
     var data: String[][] = []
@@ -44,7 +47,10 @@ export class LoadDataComponent implements OnInit {
             weightString += ", "
           }
         }
-        let temp = [week, weightString]
+        // week of {month} {day} 
+        let date = this.getDateOfWeekNumber(this.year, week)
+        var weekString:string = monthName[date.getMonth()] + " " + date.getDate();
+        let temp = ["Week of " + weekString, weightString]
         data.push(temp)
       }
     }
@@ -67,12 +73,16 @@ export class LoadDataComponent implements OnInit {
     };
   }
 
-  ngOnInit(): void {
-    this.printTable = false;
-    this.allWeeks = Object.keys(this.progressLog[this.year]);
-    this.sortWeights()
-    this.gridConfig = this.populateGrid()
-    this.printTable = true;
+  // https://stackoverflow.com/a/16591175
+  getDateOfWeekNumber(year:string, week:string):Date{
+    var simple = new Date(Number(year), 0, 1 + (Number(week) - 1) * 7);
+    var dow = simple.getDay();
+    var ISOweekStart = simple;
+    if (dow <= 4)
+      ISOweekStart.setDate(simple.getDate() - simple.getDay() + 1);
+    else
+      ISOweekStart.setDate(simple.getDate() + 8 - simple.getDay());
+    return ISOweekStart;
   }
 
   sortWeights(): void {

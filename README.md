@@ -33,8 +33,13 @@ I personally have been using this template for almost a year. I have shared this
 
 - [Purpose of the project](#purpose-of-the-project)
   - [Motivation for the project](#motivation-for-the-project)
+- [Sample demo](#sample-demo)
 - [Setup](#setup)
-- [How to use](#how-to-use)
+- [How to use with template.txt](#how-to-use-with-temlate.txt)
+- [Run the application (local)](#run-the-application-(local))
+
+## Sample demo
+![sample-demo-gif](./sample_demo.gif)
 
 ## Setup
 
@@ -44,9 +49,9 @@ I personally have been using this template for almost a year. I have shared this
 4. `cd Gym_Progress_Keeper`
 5. `python setup.py`
 
-## How to use [template.txt](https://github.com/alexabram/Gym_Progress_Keeper/blob/master/template.txt)
+## How to use with template.txt
 
-- Download and modify template.txt to match your workout routine.
+- Download and modify [template.txt](https://github.com/alexabram/Gym_Progress_Keeper/blob/master/template.txt) to match your workout routine.
   - "Started on: "
     - MMMM: Month (e.g., January)
     - DD: day (e.g., 14)

@@ -1,6 +1,6 @@
 Started on: MMMM DD, YYYY
 
-DAY1 - chest/bi
+DAY1
 E) BENCH PRESS (chest)
 W1: 4x10-12
 alt:
@@ -20,7 +20,7 @@ weight:
 alt:
 weight:
 
-DAY2 - shoulder/triceps
+DAY2
 E) DUMBBELL SHOULDER PRESS (shoulders)
 12-15 // 10-12 // 8-10
 alt:
@@ -40,7 +40,7 @@ W3: 4x6-8
 alt:
 weight:
 
-DAY3 - back/legs
+DAY3
 E) DEADLIFT (back)
 12-15 // 10-12 // 8-10
 alt:

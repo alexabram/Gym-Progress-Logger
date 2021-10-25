@@ -35,8 +35,8 @@ I personally have been using this template for almost a year. I have shared this
   - [Motivation for the project](#motivation-for-the-project)
 - [Sample demo](#sample-demo)
 - [Setup](#setup)
-- [How to use with template.txt](#how-to-use-with-temlate.txt)
-- [Run the application (local)](#run-the-application-(local))
+- [How to use with template](#how-to-use-with-temlate)
+- [Run the application locally](#run-the-application-locally)
 
 ## Sample demo
 ![sample-demo-gif](./sample_demo.gif)
@@ -74,7 +74,7 @@ I personally have been using this template for almost a year. I have shared this
   - any sort of exercise and muscle group
   - any set and repetition range they wish
 
-## Run the application (local)
+## Run the application locally
 
 1. Place all template.txt (if more than one file, rename files uniquely) file inside the `/data/imports/` folder created during [setup](#setup).
 2. Run command `python runlocal.py` in the directory where this repository was cloned during [setup](#setup).

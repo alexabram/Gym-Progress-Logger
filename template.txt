@@ -1,0 +1,59 @@
+Started on: MMMM DD, YYYY
+
+DAY1 - chest/bi
+E) BENCH PRESS (chest)
+W1: 4x10-12
+alt:
+weight:
+W2: 4x8-10
+alt:
+weight:
+W3: 4x6-8
+alt:
+weight:
+E) BARBELL CURL (biceps)
+4x10-12
+alt:
+weight:
+alt:
+weight:
+alt:
+weight:
+
+DAY2 - shoulder/triceps
+E) DUMBBELL SHOULDER PRESS (shoulders)
+12-15 // 10-12 // 8-10
+alt:
+weight:
+alt:
+weight:
+alt:
+weight:
+E) CABLE PUSHDOWN (triceps)
+W1: 4x10-12
+alt:
+weight:
+W2: 4x8-10
+alt:
+weight:
+W3: 4x6-8
+alt:
+weight:
+
+DAY3 - back/legs
+E) DEADLIFT (back)
+12-15 // 10-12 // 8-10
+alt:
+weight:
+alt:
+weight:
+alt:
+weight:
+E) SQUATS (legs)
+4x10-12
+alt:
+weight:
+alt:
+weight:
+alt:
+weight:
